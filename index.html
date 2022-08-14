@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>MathJax Sandbox</title>
+  <meta name="description" content="MathJax Sandbox">
+  <meta name="keywords" content="MathJax,数式,LaTeX,TeX">
+  <link rel="icon" href="images/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<!-- HTML body -->
+<body class="has-background-light">
+  <nav class="navbar is-light">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item brand-text" href="index.html">
+          <img src="images/logo.svg" width="150" alt="TeX2Image">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <div class="columns">
+
+      <!-- left side menu -->
+      <div class="column is-3">
+        <aside class="menu is-hidden-mobile">
+          <p class="menu-label">MENU</p>
+          <div class="buttons">
+            <button id="reset" class="button is-fullwidth is-primary" onclick="reset()">
+              <span class="icon is-small"><i class="fa-solid fa-arrows-rotate"></i></span>
+              <span>RESET</span>
+            </button>
+
+            <button id="generate" class="button is-fullwidth is-info" onclick="generate()">
+              <span class="icon is-small"><i class="fa-solid fa-calculator"></i></span>
+              <span>GENERATE</span>
+            </button>
+
+            <button id="generate" class="button is-fullwidth is-warning" onclick="copyToClipboard()">
+              <span class="icon is-small"><i class="fa-solid fa-copy"></i></span>
+              <span>COPY TO CLIPBOARD</span>
+            </button>
+          </div>
+
+          <p class="menu-label">MODE</p>
+          <div class="dropdown is-hoverable">
+            <div class="dropdown-trigger">
+              <button id="select-mode" class="button" aria-haspopup="true" aria-controls="mode-menu">
+                <span class="icon is-small"><i class="fa-solid fa-angle-down"></i></span>
+                <span>align</span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="mode-menu" role="menu">
+              <div class="dropdown-content">
+                <a class="dropdown-item is-active" onclick="setMode('align')">align</a>
+                <a class="dropdown-item" onclick="setMode('cases')">cases</a>
+                <a class="dropdown-item" onclick="setMode('inline')">inline</a>
+              </div>
+            </div>
+          </div>
+
+          <p class="menu-label">DOWNLOAD</p>
+          <div class="buttons">
+            <a id="download-svg" class="button" onclick="downloadSVG()">
+              <span class="icon is-small"><i class="fa-solid fa-download"></i></span>
+              <span>SVG</span>
+            </a>
+            <a id="download-png" class="button" onclick="downloadPNG()">
+              <span class="icon is-small"><i class="fa-solid fa-download"></i></span>
+              <span>PNG</span>
+            </a>
+            <a id="download-jpg" class="button" onclick="downloadJPG()">
+              <span class="icon is-small"><i class="fa-solid fa-download"></i></span>
+              <span>JPG</span>
+            </a>
+          </div>
+
+          <p class="menu-label">HISTORY</p>
+          <div class="box has-background-light">
+            <a href="#">aaaaa</a>
+            <a href="#">bbbbb</a>
+            <a href="#">ccccc</a>
+          </div>
+        </aside>
+      </div>
+
+      <div class="column">
+        <!-- input area-->
+        <section>
+          <div class="container is-widescreen">
+            <textarea id="input" class="textarea" placeholder="Input tex-style equation here."></textarea>
+          </div>
+        </section>
+
+        <!-- output (display) area -->
+        <section>
+          <div id="output"></div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load JavaScript Files -->
+  <script src="https://kit.fontawesome.com/4a189adb26.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
