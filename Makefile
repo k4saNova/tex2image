@@ -6,3 +6,4 @@ local-server:
 
 kill-server:
 	kill `ps -u | grep -e "$(SERVER_CMD)" | awk '{print $$2}'` &> /dev/null
+	rm nohup.out &> /dev/null

@@ -37,8 +37,37 @@ const resetById = (id) => {
  */
 const getTex2SvgPromise = (input, outputNode) => {
   const options = MathJax.getMetricsFor(outputNode);
-  options.display = true;
+  const currentMode = getMode();
+  options.display = (currentMode !== "inline");
   return MathJax.tex2svgPromise(input, options);
+};
+
+
+
+const getSvgNode = () => {
+  const svgNode = document.getElementById("output")
+                          .getElementsByTagName("svg")[0];
+  if (svgNode === undefined) {
+    return null;
+  }
+  return svgNode;
+}
+
+
+const getTSFilename = (ext) => {
+  return `test.${ext}`
+};
+
+
+const download = (blob, filename) => {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 };
 
 
@@ -46,15 +75,16 @@ const getTex2SvgPromise = (input, outputNode) => {
  * onclick function of the Download SVG button
  */
 const downloadSVG = () => {
-  console.log("download svg is called");
-};
-
-
-/**
- * onclick function of the Download PNG button
- */
-const downloadPNG = () => {
-  console.log("download png is called");
+  const svg = getSvgNode();
+  if (svg === null) {
+    console.error("failed download svg");
+    return;
+  }
+  console.log(svg);
+  const svgText = new XMLSerializer().serializeToString(svg);
+  const svgBlob = new Blob([svgText], { type: 'image/svg+xml;charset=utf-8' });
+  const filename = getTSFilename("svg");
+  download(svgBlob, filename);
 };
 
 
@@ -84,7 +114,7 @@ const generate = () => {
   // reference: https://mathjax.github.io/MathJax-demos-web/input-tex2svg.html.html
   promise.then((node) => {
     const svgNode = node.getElementsByTagName("svg")[0];
-    if (svg === undefined) {
+    if (svgNode === undefined) {
       throw new Error("Uncatch svg element");
     }
     outputNode.appendChild(svgNode);
@@ -92,8 +122,6 @@ const generate = () => {
     MathJax.startup.document.updateDocument();
   }).catch((err) => {
     console.log(err.message);
-  }).then(() => {
-    console.log("error is done!");
   });
 };
 
