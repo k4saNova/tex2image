@@ -82,7 +82,11 @@ const generate = () => {
   const outputNode = document.getElementById("output");
   const promise = getTex2SvgPromise(input, outputNode);
   // reference: https://mathjax.github.io/MathJax-demos-web/input-tex2svg.html.html
-  promise.then((node) => { 
+    promise.then((node) => {
+    // test
+    console.log(node);
+    const svg = node.getElementsByTagName("svg")[0];
+    console.log(svg);
     outputNode.appendChild(node);
     // 
     MathJax.startup.document.clear();
@@ -128,11 +132,17 @@ const setMode = (mode) => {
   selectButton.textContent = mode;
 };
 
-
-const autoCompleteJs = new autoComplete({
-  selector: "#input",
-  data: {
-    src: ["\\frac{}{}", "\\alpha", "\\beta", "hello"],
-    cache: true
+window.MathJax = {
+  jax: ["input/TeX", "output/SVG"],
+  svg: {
+    fontCache: 'global'
   }
-})
+}
+
+// const autoCompleteJs = new autoComplete({
+//   selector: "#input",
+//   data: {
+//     src: ["\\frac{}{}", "\\alpha", "\\beta", "hello"],
+//     cache: true
+//   }
+// })

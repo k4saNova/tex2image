@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title>MathJax Sandbox</title>
-  <meta name="description" content="MathJax Sandbox">
+  <title>TeX2Image Online</title>
+  <meta name="description" content="TeX2Image Online">
   <meta name="keywords" content="MathJax,数式,LaTeX,TeX">
   <link rel="icon" href="images/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,16 +36,19 @@
             <button id="reset" class="button is-fullwidth is-primary" onclick="reset()">
               <span class="icon is-small"><i class="fa-solid fa-arrows-rotate"></i></span>
               <span>RESET</span>
+	      <span>(Ctrl-r)</span>
             </button>
 
             <button id="generate" class="button is-fullwidth is-info" onclick="generate()">
               <span class="icon is-small"><i class="fa-solid fa-calculator"></i></span>
               <span>GENERATE</span>
+	      <span>(Ctrl-s)</span>
             </button>
 
             <button id="generate" class="button is-fullwidth is-warning" onclick="copyToClipboard()">
               <span class="icon is-small"><i class="fa-solid fa-copy"></i></span>
               <span>COPY TO CLIPBOARD</span>
+              <span>(Ctrl-c)</span>
             </button>
           </div>
 
@@ -76,11 +79,12 @@
               <span class="icon is-small"><i class="fa-solid fa-download"></i></span>
               <span>PNG</span>
             </a>
-            <a id="download-jpg" class="button" onclick="downloadJPG()">
+	    <a id="download-png" class="button" onclick="downloadPNG()">
               <span class="icon is-small"><i class="fa-solid fa-download"></i></span>
-              <span>JPG</span>
+              <span>PNG</span>
             </a>
           </div>
+	  
 
           <p class="menu-label">HISTORY</p>
           <div class="box has-background-light">
@@ -101,7 +105,9 @@
 
         <!-- output (display) area -->
         <section>
-          <div id="output"></div>
+	  <div class="container block is-widescreen">
+            <div id="output" class="box"></div>
+	  </div>
         </section>
       </div>
     </div>

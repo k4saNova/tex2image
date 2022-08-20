@@ -12,3 +12,7 @@ body {
     height: 100%;
     margin: 0;
 }
+
+section:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
