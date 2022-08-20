@@ -13,6 +13,7 @@
 </head>
 
 <!-- HTML body -->
+
 <body class="has-background-light">
   <nav class="navbar is-light">
     <div class="container">
@@ -35,20 +36,17 @@
           <div class="buttons">
             <button id="reset" class="button is-fullwidth is-primary" onclick="reset()">
               <span class="icon is-small"><i class="fa-solid fa-arrows-rotate"></i></span>
-              <span>RESET</span>
-	      <span>(Ctrl-r)</span>
+              <span>RESET [Ctrl-r]</span>
             </button>
 
             <button id="generate" class="button is-fullwidth is-info" onclick="generate()">
               <span class="icon is-small"><i class="fa-solid fa-calculator"></i></span>
-              <span>GENERATE</span>
-	      <span>(Ctrl-s)</span>
+              <span>GENERATE [Ctrl-s]</span>
             </button>
 
             <button id="generate" class="button is-fullwidth is-warning" onclick="copyToClipboard()">
               <span class="icon is-small"><i class="fa-solid fa-copy"></i></span>
-              <span>COPY TO CLIPBOARD</span>
-              <span>(Ctrl-c)</span>
+              <span>COPY PNG [Ctrl-c]</span>
             </button>
           </div>
 
@@ -70,21 +68,21 @@
           </div>
 
           <p class="menu-label">DOWNLOAD</p>
-          <div class="buttons">
-            <a id="download-svg" class="button" onclick="downloadSVG()">
-              <span class="icon is-small"><i class="fa-solid fa-download"></i></span>
-              <span>SVG</span>
-            </a>
-            <a id="download-png" class="button" onclick="downloadPNG()">
-              <span class="icon is-small"><i class="fa-solid fa-download"></i></span>
-              <span>PNG</span>
-            </a>
-	    <a id="download-png" class="button" onclick="downloadPNG()">
-              <span class="icon is-small"><i class="fa-solid fa-download"></i></span>
-              <span>PNG</span>
-            </a>
+          <div class="columns">
+            <div class="column is-half">
+              <a id="download-svg" class="button is-fullwidth" onclick="downloadSVG()">
+                <span class="icon is-small"><i class="fa-solid fa-download"></i></span>
+                <span>SVG</span>
+              </a>
+            </div>
+            <div class="column is-half">
+              <a id="download-png" class="button is-fullwidth" onclick="downloadPNG()">
+                <span class="icon is-small"><i class="fa-solid fa-download"></i></span>
+                <span>PNG</span>
+              </a>
+            </div>
           </div>
-	  
+
 
           <p class="menu-label">HISTORY</p>
           <div class="box has-background-light">
@@ -105,9 +103,9 @@
 
         <!-- output (display) area -->
         <section>
-	  <div class="container block is-widescreen">
+          <div class="container block is-widescreen">
             <div id="output" class="box"></div>
-	  </div>
+          </div>
         </section>
       </div>
     </div>

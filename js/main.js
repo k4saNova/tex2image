@@ -82,17 +82,18 @@ const generate = () => {
   const outputNode = document.getElementById("output");
   const promise = getTex2SvgPromise(input, outputNode);
   // reference: https://mathjax.github.io/MathJax-demos-web/input-tex2svg.html.html
-    promise.then((node) => {
-    // test
-    console.log(node);
-    const svg = node.getElementsByTagName("svg")[0];
-    console.log(svg);
-    outputNode.appendChild(node);
-    // 
+  promise.then((node) => {
+    const svgNode = node.getElementsByTagName("svg")[0];
+    if (svg === undefined) {
+      throw new Error("Uncatch svg element");
+    }
+    outputNode.appendChild(svgNode);
     MathJax.startup.document.clear();
     MathJax.startup.document.updateDocument();
   }).catch((err) => {
     console.log(err.message);
+  }).then(() => {
+    console.log("error is done!");
   });
 };
 
@@ -112,7 +113,12 @@ const reset = () => {
  * onclick function of copy to clipboard
  */
 const copyToClipboard = () => {
-
+  const svgNode = document.getElementById("output")
+                          .getElementsByTagName("svg")[0];
+  if (svgNode === undefined) {
+    throw new Error("Uncatch svg node");
+  }
+  const png = svg2png(svgNode);
 };
 
 /**
@@ -132,12 +138,6 @@ const setMode = (mode) => {
   selectButton.textContent = mode;
 };
 
-window.MathJax = {
-  jax: ["input/TeX", "output/SVG"],
-  svg: {
-    fontCache: 'global'
-  }
-}
 
 // const autoCompleteJs = new autoComplete({
 //   selector: "#input",
