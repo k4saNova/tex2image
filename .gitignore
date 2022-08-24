@@ -1,1 +1,5 @@
 nohup.out
+*.png
+*.jpg
+
+/venv/

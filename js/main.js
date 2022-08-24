@@ -88,13 +88,6 @@ const downloadSVG = () => {
 };
 
 
-/**
- * onclick function of the Download JPG button
- */
-const downloadJPG = () => {
-  console.log("download jpg is called");
-};
-
 
 /**
  * onclick function of the GENERATE button. 
@@ -164,13 +157,14 @@ const setMode = (mode) => {
   // change dropdown button
   const selectButton = document.getElementById("select-mode").getElementsByTagName("span")[1];
   selectButton.textContent = mode;
+
+  // re-render
+  generate();
 };
 
 
-// const autoCompleteJs = new autoComplete({
-//   selector: "#input",
-//   data: {
-//     src: ["\\frac{}{}", "\\alpha", "\\beta", "hello"],
-//     cache: true
-//   }
-// })
+const init = () => {
+  // 
+};
+
+init();
