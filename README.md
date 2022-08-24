@@ -6,7 +6,6 @@ blabla
 ## ToDo List
 - autoComplete.js
 - svg -> png
-- shortcut keybind
 - pagenation
 
 ## Using Libraries

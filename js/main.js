@@ -1,4 +1,11 @@
 /**
+ * global variables
+ */
+
+/** @type {Object.<string>} */
+const ContextState = [];
+
+/**
  * reads the input textarea and returns the input text.
  * @returns {string} - tex format string
  */
@@ -143,7 +150,7 @@ const copyToClipboard = () => {
 };
 
 /**
- * onclick function of dropdown menu
+ * onclick function of the dropdown menu
  */
 const setMode = (mode) => {
   // change dropdown items
@@ -163,8 +170,34 @@ const setMode = (mode) => {
 };
 
 
+
+const shortcutGenerate = (e) => {
+  if (e.ctrlKey && e.key === "s") {
+    // ignore default Ctrl-s 
+    e.preventDefault();
+    generate();
+  }
+};
+
+
+const shortcutCopy = (e) => {
+  if(!(e.ctrlKey && e.key === "c")) {
+    return;
+  }
+  // run default processes in the input textarea
+  if (e.target.id === "input") {
+    return;
+  }
+  // ignore default Ctrl-c
+  e.preventDefault();
+  console.log("run copy png");
+}
+
+
 const init = () => {
-  // 
+  document.addEventListener("keydown", shortcutGenerate);
+  document.addEventListener("keydown", shortcutCopy);
+  console.log("hello");
 };
 
 init();
